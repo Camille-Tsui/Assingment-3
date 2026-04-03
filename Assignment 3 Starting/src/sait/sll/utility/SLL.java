@@ -9,7 +9,6 @@ public class SLL implements LinkedListADT, Serializable{
 	 */
 	private static final long serialVersionUID = 4207147896437339801L;
 	
-	private SLLnode element;
 	private SLLnode head, tail;
 	private int size;
 	
