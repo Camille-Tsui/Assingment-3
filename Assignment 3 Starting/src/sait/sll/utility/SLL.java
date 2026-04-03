@@ -10,6 +10,9 @@ public class SLL implements LinkedListADT, Serializable{
 	private static final long serialVersionUID = 4207147896437339801L;
 	
 	private SLLnode element;
+	private SLLnode head, tail;
+	private int size;
+	
 	@Override
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
@@ -24,8 +27,17 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public void append(Object data) {
-		// TODO Auto-generated method stub
 		
+		SLLnode newNode = new SLLnode(data);
+		if (head == null) {
+			tail = head = newNode;
+		}
+		else {
+			tail.setNext(newNode);
+			tail = newNode;
+		}
+		
+		size++;
 	}
 
 	@Override

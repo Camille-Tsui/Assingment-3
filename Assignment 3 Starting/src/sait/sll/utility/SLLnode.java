@@ -6,7 +6,7 @@ import sait.sll.problemdomain.User;
 
 public class SLLnode implements Serializable{
 	
-	private User user;
+	private Object data;
 	private SLLnode next;
 
 	/**
@@ -14,26 +14,26 @@ public class SLLnode implements Serializable{
 	 */
 	private static final long serialVersionUID = -4557626414187024239L;
 	
-	public SLLnode(User user) {
-		this.user = user;
+	public SLLnode(Object data) {
+		this.data = data;
 	}
 	
-	public SLLnode(User user, SLLnode next) {
-		this.user = user;
+	public SLLnode(Object data, SLLnode next) {
+		this.data = data;
 		this.next = next;
 	}
 
 	
-	public User getUser() {
-		return user;
+	public Object getData() {
+		return data;
 	}
 
 	public SLLnode getNext() {
 		return next;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setData(Object data) {
+		this.data = data;
 	}
 
 	public void setNext(SLLnode next) {
