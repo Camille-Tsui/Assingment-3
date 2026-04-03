@@ -89,7 +89,10 @@ class LinkedListTest {
 		 * 
 		 * d -> c -> b -> a
 		 */
-		
+		System.out.println(this.linkedList.retrieve(0));
+		System.out.println(this.linkedList.retrieve(1));
+		System.out.println(this.linkedList.retrieve(2));
+		System.out.println(this.linkedList.retrieve(3));
 		// Test the linked list is not empty.
 		assertFalse(this.linkedList.isEmpty());
 		

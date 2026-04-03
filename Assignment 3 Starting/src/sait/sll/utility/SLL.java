@@ -47,9 +47,8 @@ public class SLL implements LinkedListADT, Serializable{
 			tail = head = newNode;
 		}
 		else {
-			SLLnode temp = head;
-			head.setNext(temp);
-			head.setData(data);
+			newNode.setNext(head);
+			head = newNode;
 		}
 		
 		size++;
