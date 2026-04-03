@@ -89,10 +89,6 @@ class LinkedListTest {
 		 * 
 		 * d -> c -> b -> a
 		 */
-		System.out.println(this.linkedList.retrieve(0));
-		System.out.println(this.linkedList.retrieve(1));
-		System.out.println(this.linkedList.retrieve(2));
-		System.out.println(this.linkedList.retrieve(3));
 		// Test the linked list is not empty.
 		assertFalse(this.linkedList.isEmpty());
 		
@@ -247,5 +243,22 @@ class LinkedListTest {
 		
 		String value = (String) this.linkedList.retrieve(1);
 		assertEquals("b", value);
+	}
+	
+	
+	// adding extra test functions
+	
+	/**
+	 * Tests finding if data exists in linked list.
+	 */
+	@Test
+	void testContains() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
+		
+		assertEquals(true, this.linkedList.contains("b"));
+		assertEquals(false, this.linkedList.contains("z"));
 	}
 }
