@@ -42,9 +42,20 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public void prepend(Object data) {
-		// TODO Auto-generated method stub
+		SLLnode newNode = new SLLnode(data);
+		if (head == null) {
+			tail = head = newNode;
+		}
+		else {
+			SLLnode temp = head;
+			head.setNext(temp);
+			head.setData(data);
+		}
 		
+		size++;
 	}
+		
+	
 
 	@Override
 	public void insert(Object data, int index) throws IndexOutOfBoundsException {
@@ -60,8 +71,7 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
@@ -72,8 +82,18 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public Object retrieve(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (index < 0 || index > size -1) {
+			throw new IndexOutOfBoundsException();
+		}
+		else {
+			SLLnode temp = head;
+			
+			for (int i = 0; i < index; i++) {
+				temp = temp.getNext();
+			}
+			return temp.getData();
+		}
 	}
 
 	@Override
