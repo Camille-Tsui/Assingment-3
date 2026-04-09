@@ -14,14 +14,14 @@ public class SLL implements LinkedListADT, Serializable{
 	
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		head = null;
+		tail = null;
+		size = 0;
 	}
 
 	@Override
@@ -57,8 +57,14 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public void insert(Object data, int index) throws IndexOutOfBoundsException {
-		if (index < 0 || index > size -1) {
+		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
+		}
+		else if (index == 0) {
+			prepend(data);
+		}
+		else if (index == size) {
+			append(data);
 		}
 		else {
 			SLLnode temp = head;
@@ -75,8 +81,16 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public void replace(Object data, int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		
+		if (index < 0 || index > size - 1) {
+			throw new IndexOutOfBoundsException();
+		}
+		else {
+			SLLnode temp = head;
+			for (int i = 0; i < index; i++) {
+				temp = temp.getNext();
+			}
+			temp.setData(data);
+		}
 	}
 
 	@Override
@@ -86,8 +100,32 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public void delete(int index) throws IndexOutOfBoundsException {
-		// TODO Auto-generated method stub
-		
+		if (index < 0 || index > size - 1) {
+			throw new IndexOutOfBoundsException();
+		}
+		else if (index == 0) {
+			head = head.getNext();
+			size--;
+			
+			if (size == 0) {
+				tail = null;
+			}
+		}
+		else {
+			SLLnode temp = head;
+			for (int i = 0; i < index - 1; i++) {
+				temp = temp.getNext();
+			}
+			
+			SLLnode nodeToDelete = temp.getNext();
+			temp.setNext(nodeToDelete.getNext());
+			
+			if (nodeToDelete == tail) {
+				tail = temp;
+			}
+			
+			size--;
+		}
 	}
 
 	@Override
@@ -108,8 +146,20 @@ public class SLL implements LinkedListADT, Serializable{
 
 	@Override
 	public int indexOf(Object data) {
-		// TODO Auto-generated method stub
-		return 0;
+		SLLnode temp = head;
+		int index = 0;
+		
+		while (temp != null) {
+			if (temp.getData() == null && data == null) {
+				return index;
+			}
+			else if (temp.getData() != null && temp.getData().equals(data)) {
+				return index;
+			}
+			temp = temp.getNext();
+			index++;
+		}
+		return -1;
 	}
 
 	@Override
@@ -117,7 +167,10 @@ public class SLL implements LinkedListADT, Serializable{
 		SLLnode temp = head;
 		
 		while (temp != null) {
-			if (temp.getData() == data) {
+			if (temp.getData() == null && data == null) {
+				return true;
+			}
+			else if (temp.getData() != null && temp.getData().equals(data)) {
 				return true;
 			}
 			temp = temp.getNext();
