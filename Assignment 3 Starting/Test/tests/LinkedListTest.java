@@ -261,4 +261,63 @@ class LinkedListTest {
 		assertEquals(true, this.linkedList.contains("b"));
 		assertEquals(false, this.linkedList.contains("z"));
 	}
+	
+	/**
+	 * Tests clearing all nodes from linked list.
+	 */
+	@Test
+	void testClear() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		
+		this.linkedList.clear();
+		
+		assertTrue(this.linkedList.isEmpty());
+		assertEquals(0, this.linkedList.size());
+	}
+	
+	/**
+	 * Tests deleting the first node from linked list.
+	 */
+	@Test
+	void testDeleteFirstNode() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		
+		this.linkedList.delete(0);
+		
+		assertEquals(2, this.linkedList.size());
+		assertEquals("b", this.linkedList.retrieve(0));
+		assertEquals("c", this.linkedList.retrieve(1));
+	}
+	
+	/**
+	 * Tests deleting the last node from linked list.
+	 */
+	@Test
+	void testDeleteLastNode() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		
+		this.linkedList.delete(2);
+		
+		assertEquals(2, this.linkedList.size());
+		assertEquals("a", this.linkedList.retrieve(0));
+		assertEquals("b", this.linkedList.retrieve(1));
+	}
+	
+	/**
+	 * Tests indexOf when node does not exist.
+	 */
+	@Test
+	void testIndexOfNotFound() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		
+		assertEquals(-1, this.linkedList.indexOf("z"));
+	}
 }
